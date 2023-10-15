@@ -1,15 +1,15 @@
 ---Entity 모델
 - 필요한 모델: 회사, 사용자, 채용공고, 지원내역(선택사항)
-채용공고와 회사ID 1:1 (한개의 채용공고엔 한개의 회사만 올리니까)
-채용공고에 들어가는것 - 고유ID 	recrNo;
+채용공고와 회사ID N:1 (한개의 회사가 여러개 채용공고 올릴수 있으니까)
+채용공고에 들어가는것 - 고유번호 	recrNo;
 				회사ID	comId;
 				채용포지션	position;
 				보상금		money;
 				내용		content;
 				사용기술	skill;
 
-회사에 들어가는것	-	회사고유ID	comId;
-				회사명		company;
+회사에 들어가는것	-	회사고유번호	comNo;
+				회사명		companyName;
 				국가		country;
 				지역		region;
 				공고리스트	recList;
@@ -18,8 +18,8 @@
 				지원공고리스트 	recrNo;
 				요구사항에 이름이랑 전화번호 등을 요구하지않아 기재를 해야할지 말아야할지 고민되는부분
 
-지원내역 -			지원내역고유ID	hisId;
-				채용공고ID		recrNo;
+지원내역 -			지원내역고유번호	hisNo;
+				채공고유ID		recrNo;
 				사용자ID		userId;
 지원공고중복제거 하기위해 		
 ----------------Entity모델
