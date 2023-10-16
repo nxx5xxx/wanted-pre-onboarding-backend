@@ -1,11 +1,14 @@
 package com.wanted.pre.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.wanted.pre.entity.Recruitment;
 import com.wanted.pre.repository.CompanyRepository;
 import com.wanted.pre.repository.RecruitmentRepository;
+import com.wanted.pre.vo.RecruitmentsVO;
 
 @Service
 public class RecruitmentServiceImpl implements RecruitmentService{
@@ -29,5 +32,11 @@ public class RecruitmentServiceImpl implements RecruitmentService{
 	public void deleteRecruit(Long recrNo) {
 		recrRepo.deleteById(recrNo);
 		
+	}
+	
+
+	@Override
+	public List<RecruitmentsVO> findRecruitmentsInfomation() {
+		return recrRepo.findRecruitmentsInfomation();
 	}
 }
