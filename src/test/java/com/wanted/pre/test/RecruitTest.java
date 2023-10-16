@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import com.wanted.pre.entity.Company;
 import com.wanted.pre.entity.Recruitment;
 import com.wanted.pre.repository.CompanyRepository;
 import com.wanted.pre.repository.RecruitmentRepository;
@@ -22,7 +23,7 @@ class RecruitTest {
 		Recruitment recr = new Recruitment();
 		
 		//recr.setCompany(comRepo.findById((long)1).orElseThrow());
-		recr.setComId("회사1");
+		//recr.setCompany(new Company().setComId("구글"));
 		recr.setPosition("백엔드 주니어 개발자");
 		recr.setMoney(1000000);
 		recr.setContent("원티드랩에서 백엔드 주니어 개발자를 채용합니다. 자격요건은..");

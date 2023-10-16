@@ -30,8 +30,11 @@ public class Recruitment {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long recrNo;
 	
-	@Column(name = "com_id")
-	private String comId;
+//	@Column(name = "com_id")
+//	private String comId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "com_id")
+    private Company company;
 	
 	private String position;
 	private long money;
@@ -41,5 +44,7 @@ public class Recruitment {
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="member_id")
 	private Member member;
+	
+	
 
 }

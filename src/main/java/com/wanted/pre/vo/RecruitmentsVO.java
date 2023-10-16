@@ -19,7 +19,6 @@ public class RecruitmentsVO {
 	private String region;
 	private String position;
 	private long money;
-//	private String content;
 	private String skill;
 	public RecruitmentsVO(Long recrNo, String comId, String country, String region, String position, long money,
 			String skill) {

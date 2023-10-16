@@ -22,6 +22,8 @@ public class ApiController {
 	//	1.공고등록
 	@PostMapping("recruitment")
 	void insertRecruitment(@RequestBody Recruitment recruitment) {
+		//System.out.println(recruitment);
+		System.out.println(recruitment.getCompany().getComId());
 		recrService.insertRecruit(recruitment);
 	}
 	
