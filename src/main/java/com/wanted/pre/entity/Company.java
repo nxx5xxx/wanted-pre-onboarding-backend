@@ -10,6 +10,8 @@ import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -29,6 +31,7 @@ public class Company {
 	private String region;
 	
 	@OneToMany(mappedBy = "company" , cascade = CascadeType.ALL , fetch = FetchType.LAZY)
+	@JsonBackReference
 	private List<Recruitment> recrList = new ArrayList<>();
 	
 

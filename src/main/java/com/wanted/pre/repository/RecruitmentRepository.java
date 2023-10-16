@@ -13,22 +13,10 @@ import com.wanted.pre.vo.RecruitmentsVO;
 @Repository
 public interface RecruitmentRepository extends JpaRepository<Recruitment, Long>{
 	//공고리스트
-//	@Query("select new com.wanted.pre.vo.RecruitmentsVO(r.recrNo, c.comId, c.country, c.region, r.position, r.money, r.skill) from Recruitment r, Company c where r.comId = c.comId")
-//	List<RecruitmentsVO> findRecruitmentsInfomation();
 	@Query("select new com.wanted.pre.vo.RecruitmentsVO(r.recrNo, r.company.comId, r.company.country, r.company.region, r.position, r.money, r.skill) from Recruitment r")
 	List<RecruitmentsVO> findRecruitmentsInfomation();
-
 	
 	//리스트 중 검색
-//	@Query("select new com.wanted.pre.vo.RecruitmentsVO(r.recrNo, c.comId, c.country, c.region, r.position, r.money, r.skill) "
-//			+ "from Recruitment r, Company c where r.comId = c.comId AND "
-//			+ "(r.comId Like %:search% "
-//			+ "OR c.country Like %:search% "
-//			+ "OR c.region Like %:search% "
-//			+ "OR r.money Like %:search% "
-//			+ "OR r.position Like %:search% "
-//			+ "OR r.skill Like %:search%) ")
-//	List<RecruitmentsVO> searchRecruitments(String search);
 	@Query("select new com.wanted.pre.vo.RecruitmentsVO(r.recrNo, r.company.comId, r.company.country, r.company.region, r.position, r.money, r.skill) "
 	+ "from Recruitment r where "
 	+ "(r.company.comId Like %:search% "
@@ -40,13 +28,11 @@ public interface RecruitmentRepository extends JpaRepository<Recruitment, Long>{
 	List<RecruitmentsVO> searchRecruitments(String search);
 	
 	//공고상세
-//	@Query("select new com.wanted.pre.vo.RecruitmentDetailVO(r.recrNo, r.company.comId, r.company.country, r.company.region, r.position, r.money, r.skill, r.content, r.company.recrList) "
-//			+ "from Recruitment r where "
-//			+ "recrNo=:recrNo")
-//	List<RecruitmentDetailVO> findRecruitmentDetail(long recrNo);
-	@Query("select new com.wanted.pre.vo.RecruitmentDetailVO(r.recrNo, r.company.comId, r.company.country, r.company.region, r.position, r.money, r.skill, r.content) "
+	@Query("select new com.wanted.pre.vo.RecruitmentDetailVO(r.recrNo, r.company.comId, r.company.country, r.company.region, r.position, r.money, r.skill, r.content ) "
 			+ "from Recruitment r where "
 			+ "recrNo=:recrNo")
-	List<RecruitmentDetailVO> findRecruitmentDetail(long recrNo);
-
+	RecruitmentDetailVO findRecruitmentDetail(long recrNo);
+	//회사가 올린 다른공고 리스트
+	@Query(value = "select recr_no from recruitment r, company c where r.com_id=c.com_id and c.com_id=:comId",nativeQuery = true)
+	List<Long> findNecrNoByCompany_ComId(String comId);
 }

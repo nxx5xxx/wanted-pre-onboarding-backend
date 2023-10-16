@@ -1,5 +1,7 @@
 package com.wanted.pre.vo;
 
+import java.util.List;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -8,7 +10,7 @@ import lombok.ToString;
 
 @Getter @Setter @ToString
 @NoArgsConstructor @AllArgsConstructor
-public class RecruitmentDetailVO {
+public class RecruitmentDetailAddListVO {
 //		"채용공고_id": 채용공고_id,
 //	  "회사명":"원티드랩",
 //	  "국가":"한국",
@@ -26,5 +28,6 @@ public class RecruitmentDetailVO {
 	private long money;
 	private String skill;
 	private String content;
+	private List<Long> recrList;
 
 }

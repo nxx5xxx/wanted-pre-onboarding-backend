@@ -50,6 +50,12 @@ public class ApiController {
 	Object selectAllRecruitment(@PathVariable String search) {
 		return recrService.searchRecruitments(search); 
 	}
+	
+	// 5.채용공고 상세 + 회사가올린 다른 채용공고
+	@GetMapping("recruitment/{recrNo}")
+	Object recruitmentDetail(@PathVariable long recrNo) {
+        return recrService.findRecruitmentDetail(recrNo); 
+	}
 }
 
 

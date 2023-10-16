@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 import com.wanted.pre.entity.Recruitment;
 import com.wanted.pre.repository.CompanyRepository;
 import com.wanted.pre.repository.RecruitmentRepository;
+import com.wanted.pre.vo.RecruitmentDetailAddListVO;
+import com.wanted.pre.vo.RecruitmentDetailVO;
 import com.wanted.pre.vo.RecruitmentsVO;
 
 @Service
@@ -43,4 +45,25 @@ public class RecruitmentServiceImpl implements RecruitmentService{
 	public List<RecruitmentsVO> searchRecruitments(String search) {
 		return recrRepo.searchRecruitments(search);
 	}
+	
+	@Override
+	public RecruitmentDetailAddListVO findRecruitmentDetail(long recrNo) {
+		RecruitmentDetailVO rvo = recrRepo.findRecruitmentDetail(recrNo);
+		if(rvo == null)return null;
+		RecruitmentDetailAddListVO rlvo = new RecruitmentDetailAddListVO();
+		rlvo.setRecrNo(rvo.getRecrNo());
+		rlvo.setComId(rvo.getComId());	
+		rlvo.setCountry(rvo.getCountry());
+		rlvo.setRegion(rvo.getRegion());
+		rlvo.setPosition(rvo.getPosition());
+		rlvo.setMoney(rvo.getMoney());
+		rlvo.setSkill(rvo.getSkill());
+		rlvo.setContent(rvo.getContent());
+		List<Long> otherRecruimentList = recrRepo.findNecrNoByCompany_ComId(rvo.getComId());
+		otherRecruimentList.remove(recrNo);
+		rlvo.setRecrList(otherRecruimentList);
+		return rlvo;
+
+	}
+
 }
