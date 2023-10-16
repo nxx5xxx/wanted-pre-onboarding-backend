@@ -1,5 +1,6 @@
 package com.wanted.pre.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -26,9 +27,9 @@ public class Recruitment {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long recrNo;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name="com_id")
-	private Company company;
+	@Column(name = "com_id")
+	private String comId;
+	
 	private String position;
 	private long money;
 	private String content;
