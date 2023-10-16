@@ -12,15 +12,15 @@
 				회사명		companyName;
 				국가		country;
 				지역		region;
-				공고리스트	recList;
+				공고리스트	recrList;
 				
-사용자에 들어가는것	-	사용자ID 		userId; - 사용자의경우 아이디가 겹칠 일이 없으니 고유아이디String으로 하지않음
-				지원공고리스트 	recrNo;
+사용자에 들어가는것	-	사용자ID 		memberId; - 사용자의경우 아이디가 겹칠 일이 없으니 고유아이디String으로 하지않음
+				지원공고리스트 	recrList;
 				요구사항에 이름이랑 전화번호 등을 요구하지않아 기재를 해야할지 말아야할지 고민되는부분
 
 지원내역 -			지원내역고유번호	hisNo;
 				채공고유ID		recrNo;
-				사용자ID		userId;
+				사용자ID		memberId;
 지원공고중복제거 하기위해 		
 ----------------Entity모델
 
