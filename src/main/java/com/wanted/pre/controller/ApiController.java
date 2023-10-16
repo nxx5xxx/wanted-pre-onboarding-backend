@@ -42,6 +42,12 @@ public class ApiController {
 	Object selectAllRecruitment() {
 		return recrService.findRecruitmentsInfomation(); 
 	}
+	
+	// 4-2.공고리스트 중 검색
+	@GetMapping("recruitments/{search}")
+	Object selectAllRecruitment(@PathVariable String search) {
+		return recrService.searchRecruitments(search); 
+	}
 }
 
 

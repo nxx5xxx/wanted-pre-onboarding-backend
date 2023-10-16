@@ -34,9 +34,13 @@ public class RecruitmentServiceImpl implements RecruitmentService{
 		
 	}
 	
-
 	@Override
 	public List<RecruitmentsVO> findRecruitmentsInfomation() {
 		return recrRepo.findRecruitmentsInfomation();
+	}
+	
+	@Override
+	public List<RecruitmentsVO> searchRecruitments(String search) {
+		return recrRepo.searchRecruitments(search);
 	}
 }

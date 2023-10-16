@@ -14,4 +14,6 @@ public interface RecruitmentService {
 	void deleteRecruit(Long recrNo);
 	//채용공고 목록
 	List<RecruitmentsVO> findRecruitmentsInfomation();
+	//채용공고 목록 중 검색
+	List<RecruitmentsVO> searchRecruitments(String search);
 }
