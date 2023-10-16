@@ -3,7 +3,6 @@ package com.wanted.pre.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.wanted.pre.entity.Company;
 import com.wanted.pre.entity.Recruitment;
 import com.wanted.pre.repository.CompanyRepository;
 import com.wanted.pre.repository.RecruitmentRepository;

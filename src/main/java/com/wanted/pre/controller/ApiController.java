@@ -18,20 +18,20 @@ public class ApiController {
 	@Autowired
 	RecruitmentService recrService;
 	
-	//공고등록
-	@PostMapping("insert")
+	//	1.공고등록
+	@PostMapping("recruitment")
 	void insertRecruitment(@RequestBody Recruitment recruitment) {
 		recrService.insertRecruit(recruitment);
 	}
 	
-	//공고수정
-	@PutMapping("update/{recrNo}")
+	//	2.공고수정
+	@PutMapping("recruitment/{recrNo}")
 	void updateRecruitment(@RequestBody Recruitment recruitment,@PathVariable Long recrNo) {
 		recrService.updateRecruit(recruitment,recrNo);
 	}
 	
-	//공고삭제
-	@DeleteMapping("del/{recrNo}")
+	//	3.공고삭제
+	@DeleteMapping("recruitment/{recrNo}")
 	void deleteRecruitment(@PathVariable Long recrNo) {
 		recrService.deleteRecruit(recrNo);
 	}
