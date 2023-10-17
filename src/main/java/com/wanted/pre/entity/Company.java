@@ -22,12 +22,14 @@ public class Company {
 //	회사에 들어가는것	-	회사고유ID	comId;
 //	국가		country;
 //	지역		region;
-//	공고리스트	recList; - 빼버림
+//	공고리스트	recList;
 	
 	@Id
-	@Column(name = "com_id")
-	private String comId;	
+	@Column(name = "com_id",nullable = false)
+	private String comId;
+	@Column(nullable = false)
 	private String country;
+	@Column(nullable = false)
 	private String region;
 	
 	@OneToMany(mappedBy = "company" , cascade = CascadeType.ALL , fetch = FetchType.LAZY)

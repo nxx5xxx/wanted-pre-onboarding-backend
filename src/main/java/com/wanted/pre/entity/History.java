@@ -21,11 +21,11 @@ public class History {
 	private Long hisNo;
 	
 	@OneToOne
-	@JoinColumn(name="recr_no")
+	@JoinColumn(name="recr_no",nullable = false)
 	private Recruitment recruitment;
 	
 	@OneToOne
-	@JoinColumn(name="member_id")
+	@JoinColumn(name="member_id",nullable = false)
 	private Member member;
 	
 	
