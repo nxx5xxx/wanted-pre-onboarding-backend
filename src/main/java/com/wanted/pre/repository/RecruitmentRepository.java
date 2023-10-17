@@ -35,4 +35,6 @@ public interface RecruitmentRepository extends JpaRepository<Recruitment, Long>{
 	//회사가 올린 다른공고 리스트
 	@Query(value = "select recr_no from recruitment r, company c where r.com_id=c.com_id and c.com_id=:comId",nativeQuery = true)
 	List<Long> findNecrNoByCompany_ComId(String comId);
+	
+	//지원내역에 이미 지원한 여부를 판단 > HistoryRepository로 
 }

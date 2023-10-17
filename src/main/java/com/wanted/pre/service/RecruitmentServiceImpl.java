@@ -5,8 +5,12 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.wanted.pre.dto.HistoryDTO;
+import com.wanted.pre.entity.History;
+import com.wanted.pre.entity.Member;
 import com.wanted.pre.entity.Recruitment;
 import com.wanted.pre.repository.CompanyRepository;
+import com.wanted.pre.repository.HistoryRepository;
 import com.wanted.pre.repository.RecruitmentRepository;
 import com.wanted.pre.vo.RecruitmentDetailAddListVO;
 import com.wanted.pre.vo.RecruitmentDetailVO;
@@ -18,6 +22,8 @@ public class RecruitmentServiceImpl implements RecruitmentService{
 	RecruitmentRepository recrRepo;
 	@Autowired
 	CompanyRepository comRepo;
+	@Autowired
+	HistoryRepository hisRepo;
 	
 	@Override
 	public void insertRecruit(Recruitment recruitment) {
@@ -64,6 +70,28 @@ public class RecruitmentServiceImpl implements RecruitmentService{
 		rlvo.setRecrList(otherRecruimentList);
 		return rlvo;
 
+	}
+	
+	@Override
+	public String memberRecruit(long recrNo, String memberId) {
+		try {
+			System.out.println(recrNo + memberId);
+			if(hisRepo.findHisNoByRecrNoAndMemberId(recrNo, memberId) != null)return "이미 지원한 공고입니다";
+			History his = new History();
+			Recruitment rec = new Recruitment();
+			Member mem = new Member();
+			rec.setRecrNo(recrNo);
+			mem.setMemberId(memberId);
+			his.setRecruitment(rec);
+			his.setMember(mem);
+			hisRepo.save(his);
+			
+			return "공고가 등록되었습니다";
+		} catch (Exception e) {
+			return "공고번호와 아이디를 다시 확인해주세요";
+		}
+
+		
 	}
 
 }

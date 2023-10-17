@@ -19,4 +19,6 @@ public interface RecruitmentService {
 	List<RecruitmentsVO> searchRecruitments(String search);
 	//채용공고 상세 + 회사가 쓴 다른 공고문
 	RecruitmentDetailAddListVO findRecruitmentDetail(long recrNo);
+	//채용공고 지원
+	String memberRecruit(long recrNo,String memberId);
 }
