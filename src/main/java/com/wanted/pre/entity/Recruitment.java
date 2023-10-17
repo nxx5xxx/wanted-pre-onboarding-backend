@@ -1,5 +1,6 @@
 package com.wanted.pre.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -38,14 +39,15 @@ public class Recruitment {
 	
 	private String position;
 	private long money;
+	
+	@Column(nullable = false)
 	private String content;
 	private String skill;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="member_id")
-    @JsonManagedReference
 	private Member member;
-	
+//    @JsonManagedReference	
 	
 
 }

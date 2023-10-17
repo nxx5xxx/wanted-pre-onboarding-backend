@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.wanted.pre.dto.HistoryDTO;
 import com.wanted.pre.entity.Recruitment;
 import com.wanted.pre.service.RecruitmentService;
 
@@ -21,22 +22,36 @@ public class ApiController {
 	
 	//	1.공고등록
 	@PostMapping("recruitment")
-	void insertRecruitment(@RequestBody Recruitment recruitment) {
-		//System.out.println(recruitment);
-		System.out.println(recruitment.getCompany().getComId());
-		recrService.insertRecruit(recruitment);
+	String insertRecruitment(@RequestBody Recruitment recruitment) {
+		try {
+			if(recruitment.getCompany().getComId()==null)return "등록 내용을 다시 확인해주세요";
+			recrService.insertRecruit(recruitment);
+			return "공고 등록이 완료되었습니다";
+		} catch (Exception e) {
+			return "등록 내용을 다시 확인해주세요";
+		}
 	}
 	
 	//	2.공고수정
 	@PutMapping("recruitment/{recrNo}")
-	void updateRecruitment(@RequestBody Recruitment recruitment,@PathVariable Long recrNo) {
-		recrService.updateRecruit(recruitment,recrNo);
+	String updateRecruitment(@RequestBody Recruitment recruitment,@PathVariable Long recrNo) {
+		try {
+			recrService.updateRecruit(recruitment,recrNo);
+			return "공고 수정이 완료되었습니다";
+		} catch (Exception e) {
+			return "수정 내용을 다시 확인해주세요";
+		}
 	}
 	
 	//	3.공고삭제
 	@DeleteMapping("recruitment/{recrNo}")
-	void deleteRecruitment(@PathVariable Long recrNo) {
-		recrService.deleteRecruit(recrNo);
+	String deleteRecruitment(@PathVariable Long recrNo) {
+		try {
+			recrService.deleteRecruit(recrNo);
+			return "공고가 삭제되었습니다";
+		} catch (Exception e) {
+			return "공고번호를 다시 확인해주세요";
+		} 
 	}
 	
 	//	4-1.공고리스트
@@ -55,6 +70,13 @@ public class ApiController {
 	@GetMapping("recruitment/{recrNo}")
 	Object recruitmentDetail(@PathVariable long recrNo) {
         return recrService.findRecruitmentDetail(recrNo); 
+	}
+	
+	// 6.채용공고에 지원
+	@PostMapping("member")
+	String memberRecruit(@RequestBody HistoryDTO hisDTO) {
+		return recrService.memberRecruit(hisDTO.getRecrNo(), hisDTO.getMemberId());
+		
 	}
 }
 
