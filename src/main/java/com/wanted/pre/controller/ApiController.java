@@ -24,7 +24,6 @@ public class ApiController {
 	@PostMapping("recruitment")
 	String insertRecruitment(@RequestBody Recruitment recruitment) {
 		try {
-			if(recruitment.getCompany().getComId()==null)return "등록 내용을 다시 확인해주세요";
 			recrService.insertRecruit(recruitment);
 			return "공고 등록이 완료되었습니다";
 		} catch (Exception e) {
