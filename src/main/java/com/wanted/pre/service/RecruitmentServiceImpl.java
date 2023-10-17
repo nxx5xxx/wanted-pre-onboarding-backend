@@ -23,34 +23,38 @@ public class RecruitmentServiceImpl implements RecruitmentService{
 	CompanyRepository comRepo;
 	@Autowired
 	HistoryRepository hisRepo;
-	
+	//공고등록
 	@Override
 	public void insertRecruit(Recruitment recruitment) {
 		recrRepo.save(recruitment);
 	}
 	
+	//공고업데이트
 	@Override
 	public void updateRecruit(Recruitment recruitment,Long recrNo) {
 		recruitment.setRecrNo(recrNo);
 		recrRepo.save(recruitment);
 	}
 	
+	//공고제거
 	@Override
 	public void deleteRecruit(Long recrNo) {
 		recrRepo.deleteById(recrNo);
-		
 	}
 	
+	//공고리스트
 	@Override
 	public List<RecruitmentsVO> findRecruitmentsInfomation() {
 		return recrRepo.findRecruitmentsInfomation();
 	}
 	
+	//공고검색
 	@Override
 	public List<RecruitmentsVO> searchRecruitments(String search) {
 		return recrRepo.searchRecruitments(search);
 	}
 	
+	//공고상세 및 회사의 다른채용목록
 	@Override
 	public RecruitmentDetailAddListVO findRecruitmentDetail(long recrNo) {
 		RecruitmentDetailVO rvo = recrRepo.findRecruitmentDetail(recrNo);
@@ -71,6 +75,7 @@ public class RecruitmentServiceImpl implements RecruitmentService{
 
 	}
 	
+	//채용공고에 지원
 	@Override
 	public String memberRecruit(long recrNo, String memberId) {
 		try {
@@ -84,7 +89,7 @@ public class RecruitmentServiceImpl implements RecruitmentService{
 			his.setMember(mem);
 			hisRepo.save(his);
 			
-			return "공고가 등록되었습니다";
+			return "성공적으로 지원되었습니다";
 		} catch (Exception e) {
 			return "공고번호와 아이디를 다시 확인해주세요";
 		}
