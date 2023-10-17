@@ -3,7 +3,6 @@ package com.wanted.pre.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
-import com.wanted.pre.dto.HistoryDTO;
 import com.wanted.pre.entity.History;
 
 public interface HistoryRepository extends JpaRepository<History, Long>{

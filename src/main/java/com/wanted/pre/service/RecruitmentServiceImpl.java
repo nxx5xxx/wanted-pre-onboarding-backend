@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.wanted.pre.dto.HistoryDTO;
 import com.wanted.pre.entity.History;
 import com.wanted.pre.entity.Member;
 import com.wanted.pre.entity.Recruitment;
@@ -75,7 +74,6 @@ public class RecruitmentServiceImpl implements RecruitmentService{
 	@Override
 	public String memberRecruit(long recrNo, String memberId) {
 		try {
-			System.out.println(recrNo + memberId);
 			if(hisRepo.findHisNoByRecrNoAndMemberId(recrNo, memberId) != null)return "이미 지원한 공고입니다";
 			History his = new History();
 			Recruitment rec = new Recruitment();

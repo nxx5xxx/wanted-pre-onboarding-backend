@@ -17,7 +17,6 @@ public class RecruitmentDetailVO {
 //	  "채용보상금":1500000,
 //	  "사용기술":"Python",
 //		"채용내용": "원티드랩에서 백엔드 주니어 개발자를 채용합니다. 자격요건은..",
-//		"회사가올린다른채용공고":[채용공고_id, 채용공고_id, ..] # id List (선택사항 및 가산점요소).
 	private Long recrNo;
 	private String comId;	
 	private String country;
