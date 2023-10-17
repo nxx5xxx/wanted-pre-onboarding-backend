@@ -10,7 +10,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -31,10 +30,8 @@ public class Recruitment {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long recrNo;
 	
-//	@Column(name = "com_id")
-//	private String comId;
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "com_id")
+    @JoinColumn(name = "com_id",nullable = false)
     private Company company;
 	
 	private String position;
@@ -44,10 +41,10 @@ public class Recruitment {
 	private String content;
 	private String skill;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name="member_id")
-	private Member member;
-//    @JsonManagedReference	
+//	@ManyToOne(fetch = FetchType.LAZY)
+//	@JoinColumn(name="member_id")
+//	private Member member;
+////    @JsonManagedReference	
 	
 
 }
